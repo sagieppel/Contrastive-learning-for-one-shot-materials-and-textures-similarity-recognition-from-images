@@ -30,8 +30,7 @@ Test_Model.py --input_folder sample_data/test  --train_model_path logs/Defult.to
 
 ### parameters:
 
---input_folder input folder should contain images to compare in format  x.jpg
-And their corresponding masks in format x_MASK.jpg  (regions of the object ROI in the mask should have a value of 255 all other pixels should be 0)
+--input_folder input folder should contain images to compare, in format  x.jpg and their corresponding masks in format x_MASK.jpg  (regions of the object ROI in the mask should have a value of 255 all other pixels should be 0)
 
 --train_model_path  path to the trained model
 
