@@ -8,7 +8,9 @@ Trained models and sample data are supplied. For more information about the mode
 ![](/Figure2.jpg)
 
 # Requirement:
+
 Torch: [https://pytorch.org/](https://pytorch.org/)
+
 OpenCV: [pip install opencv-python](https://pytorch.org/)
 
 The net was trained with Conda 4.12.0 Torch 1.12.1+Cuda 113 on  a single RTX 3090.
