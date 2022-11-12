@@ -57,7 +57,7 @@ python Test_Predict_descriptor.py --input_image sample_data/test/Candies_candy_I
 
 The output is 512 values descriptor vector for the image.
 
-## Predict descriptor for every image  in folder and subfolders recursively and store in json dictionary: RunNetOnFolder.py
+## Predict descriptor for every image  in folder and subfolders recursively and store in a json dictionary file : RunNetOnFolder.py
 
 ### usage:
 python RunNetOnFolder.py --test_set_path  sample_data/test_set1 --train_model_path logs/Defult.torch 
@@ -65,7 +65,9 @@ python RunNetOnFolder.py --test_set_path  sample_data/test_set1 --train_model_pa
 
 ### Parameters
 --test_set_path path to folder every image in the folder  and sub folder recursively should have format x.jpg and their corresponding masks in format x_MASK.jpg  (regions of the object ROI in the mask should have a value of 255 all other pixels should be 0)
+
 --train_model_path  path to the trained model
+
 --out_json_path path to json file where the dictionary of descriptors to all images in the input folder will be saved. Note the dictionary will have the same tree structure as the folder.
 
 --use_roi_mask optional If you don't have a mask and want to predict the descriptor for all images set this to False 
@@ -81,8 +83,11 @@ Json dictionary file with the descriptors of all images in the folder and subfol
 python Train.py --MatSim_dir_object sample_data/VesselTrainData/ --MatSim_dir_vessel sample_data/ObjectTrainData/ --log_dir logs/
 ## parameters
 --MatSim_dir_object path for the MatSim dataset [synthetic materials on objects  train set](https://e1.pcloud.link/publink/show?code=kZXOwQZ45biYwUEAg0GRCilfErYjh0WycaX)
+
 --MatSim_dir_vessel path for the MatSim dataset [synthetic material inside transparent vessels train set](https://e1.pcloud.link/publink/show?code=kZJOwQZpA3UO7aVlW0YCF5vGkPVdVJrVqQk)
---log_dir logs/ logs dir where trained model will be save
+
+--log_dir logs/ logs dir where trained model will be saved.
+
 ## output
 Trainig for about 200,000 iteration (three days on RTX 3090) should give the model described in the paper.
 
