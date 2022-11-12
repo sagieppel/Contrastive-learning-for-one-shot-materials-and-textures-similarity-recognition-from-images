@@ -16,7 +16,7 @@ OpenCV: [pip install opencv-python](https://pytorch.org/)
 The net was trained with Conda 4.12.0 Torch 1.12.1+Cuda 113 on  a single RTX 3090.
 
 ### Pretrained model is supplied at folder: logs/Defult.torch
-### Sample data is supplied at subfolder sample_data 
+### Sample data is supplied at subfolder: sample_data 
 ### Full MatSim dataset and benchmark can be downloaded from [here](https://e1.pcloud.link/publink/show?code=kZIiSQZCYU5M4HOvnQykql9jxF4h0KiC5MX) 
 
 # Testing:
