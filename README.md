@@ -46,8 +46,11 @@ python Test_Predict_descriptor.py --input_image sample_data/test/Candies_candy_I
 ### Parameters
 
 --input_image Path for input RGB image 
+
 --input_mask  Path for the mask of ROI  material region in the image (regions of the object ROI in the mask should have a value of 255 all other pixels should be 0)
+
 --train_model_path  path to the trained model
+
 --use_roi_mask optional If you don't have a mask and want to predict the descriptor for all images set this to False 
 
 ### Output
