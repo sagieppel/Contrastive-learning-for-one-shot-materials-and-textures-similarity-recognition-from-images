@@ -82,11 +82,13 @@ Json dictionary file with the descriptors of all images in the folder and subfol
 ## usage:
 python Train.py --MatSim_dir_object sample_data/VesselTrainData/ --MatSim_dir_vessel sample_data/ObjectTrainData/ --log_dir logs/
 ## parameters
---MatSim_dir_object path for the MatSim dataset [synthetic materials on objects  train set](https://e1.pcloud.link/publink/show?code=kZXOwQZ45biYwUEAg0GRCilfErYjh0WycaX)
+--MatSim_dir_object path for the MatSim dataset [synthetic materials on objects  train set](https://e1.pcloud.link/publink/show?code=kZXOwQZ45biYwUEAg0GRCilfErYjh0WycaX)*
 
---MatSim_dir_vessel path for the MatSim dataset [synthetic material inside transparent vessels train set](https://e1.pcloud.link/publink/show?code=kZJOwQZpA3UO7aVlW0YCF5vGkPVdVJrVqQk)
+--MatSim_dir_vessel path for the MatSim dataset [synthetic material inside transparent vessels train set](https://e1.pcloud.link/publink/show?code=kZJOwQZpA3UO7aVlW0YCF5vGkPVdVJrVqQk)*
 
 --log_dir logs/ logs dir where trained model will be saved.
+
+* In training data from both folders will be sampled in equal probability (if you want to train with only one its possible for both to point for the same folder)
 
 ## output
 Trainig for about 200,000 iteration (three days on RTX 3090) should give the model described in the paper.
