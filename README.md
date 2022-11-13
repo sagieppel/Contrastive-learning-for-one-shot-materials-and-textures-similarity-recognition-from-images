@@ -1,9 +1,9 @@
 # Contrastive learning for one-shot materials and textures similarity recognition from images, using MatSim dataset
 This net receives the image and region of the object in the image and predicts the descriptor for the material. This can be used to identify visual similarity between materials in different images (Figure 1), or identify the same material on different objects and environments using single example (one-shot). See [One-shot recognition of any material anywhere using contrastive learning with
 physics-based rendering]().
-
+#### PreTrained model can be downloaded from this [url](https://e1.pcloud.link/publink/show?code=kZGUwQZNV7k6Y8NrH5zjCQPQT0Fb0aFatjV)
 The net was trained on the [MatSim dataset](https://e1.pcloud.link/publink/show?code=kZIiSQZCYU5M4HOvnQykql9jxF4h0KiC5MX_) that can be downloaded from [here](https://e1.pcloud.link/publink/show?code=kZIiSQZCYU5M4HOvnQykql9jxF4h0KiC5MX)
-Trained models and sample data are supplied. For more information about the model training and dataset.
+ 
 ![](/Figure1.jpg)
 ![](/Figure2.jpg)
 
@@ -20,7 +20,8 @@ The net was trained with Conda 4.12.0 Torch 1.12.1+Cuda 113 on  a single RTX 309
 #### Full MatSim dataset and benchmark can be downloaded from [here](https://e1.pcloud.link/publink/show?code=kZIiSQZCYU5M4HOvnQykql9jxF4h0KiC5MX) 
 
 # Testing:
-PreTrained model and sample data are supplied with the code which should allow the model to run out of the box.
+PreTrained model can be downloaded from this [url](https://e1.pcloud.link/publink/show?code=kZGUwQZNV7k6Y8NrH5zjCQPQT0Fb0aFatjV) 
+Sample data are supplied with the code which should allow the model to run out of the box.
 
 ## Finding the best similarity to each image in a folder: Test_Model.py
 For each image in a folder, find the most similar image in the same folder (most similar material).
