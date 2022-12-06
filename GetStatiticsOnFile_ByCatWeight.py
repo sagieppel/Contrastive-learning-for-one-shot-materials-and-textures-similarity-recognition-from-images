@@ -31,7 +31,7 @@ if args.test_set==1:
     tree_depth=2#  the descriptor are arrange in tree structure were each layer is a more fine grain class, 1 mean single layer (one class per descriptor) 2 means 2 layer superclas+ subclass per descriptor
 elif args.test_set==2:
     tree_depth = 1  #
-    mode = "subclass" # Set 2
+    args.mode = "subclass" # Set 2
 
 
 ###RandomMatch=False # Replace descriptor with random descriptor
