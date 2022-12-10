@@ -1,9 +1,9 @@
 # Contrastive learning for one-shot materials and textures similarity recognition from images, using MatSim dataset
 This net receives the image and region of the object in the image and predicts the descriptor for the material. This can be used to identify visual similarity between materials in different images (Figure 1), or identify the same material on different objects and environments using single example (one-shot). See [One-shot recognition of any material anywhere using contrastive learning with
-physics-based rendering](https://arxiv.org/pdf/2212.00648.pdf).
-#### PreTrained model can be downloaded from this [url](https://e1.pcloud.link/publink/show?code=kZGUwQZNV7k6Y8NrH5zjCQPQT0Fb0aFatjV) or [2](https://icedrive.net/s/Nv97G1gDvTvhgBzxzx6iRA3CPw6B)
-The net was trained on the [MatSim dataset](https://e1.pcloud.link/publink/show?code=kZIiSQZCYU5M4HOvnQykql9jxF4h0KiC5MX_) that can be downloaded from [here](https://e1.pcloud.link/publink/show?code=kZIiSQZCYU5M4HOvnQykql9jxF4h0KiC5MX) or [here](https://icedrive.net/s/A13FWzZ8V2aP9T4ufGQ1N3fBZxDF)
- 
+physics-based rendering]().
+
+The net was trained on the [MatSim dataset](https://e1.pcloud.link/publink/show?code=kZIiSQZCYU5M4HOvnQykql9jxF4h0KiC5MX_) that can be downloaded from [here](https://e1.pcloud.link/publink/show?code=kZIiSQZCYU5M4HOvnQykql9jxF4h0KiC5MX)
+Trained models and sample data are supplied. For more information about the model training and dataset.
 ![](/Figure1.jpg)
 ![](/Figure2.jpg)
 
@@ -20,8 +20,7 @@ The net was trained with Conda 4.12.0 Torch 1.12.1+Cuda 113 on  a single RTX 309
 #### Full MatSim dataset and benchmark can be downloaded from [here](https://e1.pcloud.link/publink/show?code=kZIiSQZCYU5M4HOvnQykql9jxF4h0KiC5MX) 
 
 # Testing:
-PreTrained model can be downloaded from this [url](https://e1.pcloud.link/publink/show?code=kZGUwQZNV7k6Y8NrH5zjCQPQT0Fb0aFatjV) or [2](https://icedrive.net/s/Nv97G1gDvTvhgBzxzx6iRA3CPw6B)
-Sample data are supplied with the code which should allow the model to run out of the box.
+PreTrained model and sample data are supplied with the code which should allow the model to run out of the box.
 
 ## Finding the best similarity to each image in a folder: Test_Model.py
 For each image in a folder, find the most similar image in the same folder (most similar material).
@@ -77,8 +76,6 @@ python RunNetOnFolder.py --test_set_path  sample_data/test_set1 --train_model_pa
 ### Output
 Json dictionary file with the descriptors of all images in the folder and subfolders, with the same tree structure as the input folder.
 
-### Evaluation
-For evaluation of the the descriptor accuracy see: GetStatiticsOnFile_ByCatWeight.py 
 
 
 # Traininig: Train.py
@@ -95,6 +92,7 @@ python Train.py --MatSim_dir_object sample_data/VesselTrainData/ --MatSim_dir_ve
 
 ## output
 Trainig for about 200,000 iteration (three days on RTX 3090) should give the model described in the paper.
+
 
 
 

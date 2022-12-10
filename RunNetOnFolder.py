@@ -1,4 +1,5 @@
-# recursive create descriptors for all images in folder and subfolder in targer dir (data_folder) and return dictionary of descriptors with the same structure as the folder hirarchis and save in json file
+# recursive create descriptors for all images in folder and subfolder in targer dir (data_folder)
+# and return dictionary of descriptors with the same structure as the folder hirarchis and save in json file, this file can be evaluated  by GetStatistics on file
 #
 # ...............................Imports..................................................................
 import os

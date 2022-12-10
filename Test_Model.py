@@ -13,6 +13,7 @@ parser.add_argument('--use_roi_mask', default= True, type=bool, help=' read roi 
 parser.add_argument('--crop', default= False, type=bool, help=' crop image around ROI mask')
 parser.add_argument('--mask', default= True, type=bool, help=' mask image around ROI mask')
 parser.add_argument('--UseAverageMaskUnMask', default= False, type=bool, help='')
+parser.add_argument('--save_to_file', default= False, type=bool, help='Save descriptor to file')
 args = parser.parse_args()
 
 # Usage python Test_Model.py --input_folder sample_data/test  --train_model_path logs/Defult.torch
