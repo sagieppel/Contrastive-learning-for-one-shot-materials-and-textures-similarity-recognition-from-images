@@ -77,6 +77,8 @@ python RunNetOnFolder.py --test_set_path  sample_data/test_set1 --train_model_pa
 ### Output
 Json dictionary file with the descriptors of all images in the folder and subfolders, with the same tree structure as the input folder.
 
+### Evaluation
+For evaluation of the the descriptor accuracy see: GetStatiticsOnFile_ByCatWeight.py 
 
 
 # Traininig: Train.py
