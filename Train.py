@@ -12,8 +12,8 @@ parser = argparse.ArgumentParser()
 # Input folders
 
 parser = argparse.ArgumentParser(description='Train on MatSim')
-parser.add_argument('--MatSim_dir_object', default= r"sample_data/VesselTrainData/", type=str, help='input folder 1 MatSim synthethic Objects dataset main dir')
-parser.add_argument('--MatSim_dir_vessel', default= r"sample_data/ObjectTrainData/", type=str, help='input folder 2 MatSim synthethic Vessels dataset main dir')
+parser.add_argument('--MatSim_dir_object', default= r"/home/breakeroftime/Desktop/Simulations/MatArtDataset/MatSim_Train_Objects_uni/", type=str, help='input folder 1 MatSim synthethic Objects dataset main dir')
+parser.add_argument('--MatSim_dir_vessel', default= r"/home/breakeroftime/Desktop/Simulations/MatArtDataset/MatSim_Train_Vessels_uni/", type=str, help='input folder 2 MatSim synthethic Vessels dataset main dir')
 parser.add_argument('--MaxPixels', default= 800*800*12, type=int, help='max Size of input matrix in pixels H*W*BatchSize')
 parser.add_argument('--temp', default= 0.2, type=float, help='temperature for softmax')
 parser.add_argument('--weight_decay', default= 4e-5, type=float, help='optimizer weight decay')
@@ -21,8 +21,8 @@ parser.add_argument('--learning_rate', default= 1e-5, type=float, help='optimize
 parser.add_argument('--max_iteration', default= 200000, type=float, help='max training iteration')
 parser.add_argument('--log_dir', default= r"logs/", type=str, help='log folder were train model will be saved')
 parser.add_argument('--resume_training_from', default= r"", type=str, help='path to model to resume training from')
-parser.add_argument('--auto_resume', default= True, type=bool, help='path to model to resume training from')
-parser.add_argument('--min_img_size', default= 230, type=int, help='min image size for augmentation')
+parser.add_argument('--auto_resume', default= True, type=bool, help='start training from existing last saved model')
+parser.add_argument('--min_img_size', default= 200, type=int, help='min image size for augmentation')
 parser.add_argument('--max_img_size', default= 1100, type=int, help='max image size for augmentation')
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
 print("Training hardware", device)
@@ -124,15 +124,15 @@ for itr in range(InitStep,args.max_iteration): # Main training loop
 #===================save statitics and displaye loss======================================================================================
 # --------------Save trained model------------------------------------------------------------------------------------------------------------------------------------------
     if itr % 200 == 0 and itr>0: #Save model weight and other paramters in temp file once every 1000 steps
-        print("Saving Model to file in "+TrainedModelWeightDir+"/Defult.torch")
-        torch.save(Net.state_dict(), TrainedModelWeightDir + "/Defult.torch")
-        torch.save(Net.state_dict(), TrainedModelWeightDir + "/DefultBack.torch")
+        print("Saving Model to file in "+args.log_dir+"/Defult.torch")
+        torch.save(Net.state_dict(), args.log_dir + "/Defult.torch")
+        torch.save(Net.state_dict(), args.log_dir + "/DefultBack.torch")
         print("model saved")
-        np.save(TrainedModelWeightDir+"/Learning_Rate.npy",Learning_Rate)
-        np.save(TrainedModelWeightDir+"/itr.npy",itr)
+        np.save(args.log_dir+"/Learning_Rate.npy",Learning_Rate)
+        np.save(args.log_dir+"/itr.npy",itr)
     if itr % 50000 == 0 and itr>0: #Save model weight once every 30k steps permenant (not temp)
-        print("Saving Model to file in "+TrainedModelWeightDir+"/"+ str(itr) + ".torch")
-        torch.save(Net.state_dict(), TrainedModelWeightDir + "/" + str(itr) + ".torch")
+        print("Saving Model to file in "+args.log_dir+"/"+ str(itr) + ".torch")
+        torch.save(Net.state_dict(), args.log_dir + "/" + str(itr) + ".torch")
         print("model saved")
 #......................Write and display train loss..........................................................................
     if itr % 10==0: # Display  and save train loss
