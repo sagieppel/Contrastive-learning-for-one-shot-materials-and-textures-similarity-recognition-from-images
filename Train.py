@@ -12,8 +12,10 @@ parser = argparse.ArgumentParser()
 # Input folders
 
 parser = argparse.ArgumentParser(description='Train on MatSim')
-parser.add_argument('--MatSim_dir_object', default= r"sample_data/VesselTrainData/", type=str, help='input folder 1 MatSim synthethic Objects dataset main dir')
-parser.add_argument('--MatSim_dir_vessel', default= r"sample_data/ObjectTrainData/", type=str, help='input folder 2 MatSim synthethic Vessels dataset main dir')
+#parser.add_argument('--MatSim_dir_object', default= r"sample_data/VesselTrainData/", type=str, help='input folder 1 MatSim synthethic Objects dataset main dir')
+#parser.add_argument('--MatSim_dir_vessel', default= r"sample_data/ObjectTrainData/", type=str, help='input folder 2 MatSim synthethic Vessels dataset main dir')
+parser.add_argument('--MatSim_dir_object', default= r"/home/breakeroftime/Desktop/Simulations/MatArtDataset/MatSim_Train_Objects_uni/", type=str, help='input folder 1 MatSim synthethic Objects dataset main dir')
+parser.add_argument('--MatSim_dir_vessel', default= r"/home/breakeroftime/Desktop/Simulations/MatArtDataset/MatSim_Train_Vessels_uni/", type=str, help='input folder 2 MatSim synthethic Vessels dataset main dir')
 parser.add_argument('--MaxPixels', default= 800*800*12, type=int, help='max Size of input matrix in pixels H*W*BatchSize')
 parser.add_argument('--temp', default= 0.2, type=float, help='temperature for softmax')
 parser.add_argument('--weight_decay', default= 4e-5, type=float, help='optimizer weight decay')
@@ -33,7 +35,7 @@ args = parser.parse_args()
 
 
 if not os.path.exists(args.log_dir):
-    os.mkdir(args.logs_dir)
+    os.mkdir(args.log_dir)
 # Trained_model_path="" # Path of trained model weights If you want to return to trained model, else should be =""
 
 #=========================Load net weights if exist====================================================================================================================
