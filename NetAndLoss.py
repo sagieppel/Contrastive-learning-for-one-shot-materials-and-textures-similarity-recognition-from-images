@@ -12,7 +12,8 @@ class Net(nn.Module):# Net for region based segment classification
         def __init__(self): # Load pretrained encoder and prepare net layers
             super(Net, self).__init__()
 # ---------------Load pretrained net----------------------------------------------------------
-            self.Encoder1 = models.convnext_base(pretrained=True)#resnet50(pretrained=True)
+            self.Encoder1 = models.convnext_base(weights=True)#resnet50(pretrained=True)
+           # self.Encoder1 = models.convnext_large(weights=True)  # resnet50(pretrained=True)
             # weight_shape = torch.tensor(self.Encoder1.features[0][0].weight.shape)
             # weight_shape[1] = 1
             # mask_weight=torch.zeros(tuple(weight_shape.numpy()))
