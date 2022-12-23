@@ -166,11 +166,11 @@ class Reader:
 #############################################Load batch for training #####################################################################################################################
 
 
-    def LoadRandomAugmentedBatch(self,MaxPixelsBatch,minSz,MaxSz):
+    def LoadRandomAugmentedBatch(self,MaxImagesInBatch,MaxPixelsBatch,minSz,MaxSz):
         # -----------------------Choose Image size, and create batch size-------------------------------------------------------------------------------------
         Hb = np.random.randint(minSz, MaxSz)
         Wb = np.random.randint(minSz, MaxSz)
-        Bsize=np.min([int(np.floor(MaxPixelsBatch/Hb/Wb)),15])
+        Bsize=np.min([int(np.floor(MaxPixelsBatch/Hb/Wb)),MaxImagesInBatch])
         Bmsk = np.zeros([Bsize, Hb, Wb], np.float32)
         BImg = np.zeros([Bsize, Hb, Wb, 3], np.float32)
         nSample = 3

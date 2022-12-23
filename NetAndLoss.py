@@ -106,4 +106,5 @@ class Net(nn.Module):# Net for region based segment classification
                                              else:
                                                  tpfp[abs(corl_dif)][1] += 1
                     Loss/=numSamp+0.0000001
+                    if Loss == 0: Loss = torch.sum(Desc1 * 0)  # To prevent crash *its complicated :)
                     return  Loss,tpfp

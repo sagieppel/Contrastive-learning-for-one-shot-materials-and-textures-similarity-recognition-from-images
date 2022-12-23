@@ -14,14 +14,15 @@ parser = argparse.ArgumentParser()
 parser = argparse.ArgumentParser(description='Train on MatSim')
 parser.add_argument('--MatSim_dir_object', default= r"sample_data/VesselTrainData/", type=str, help='input folder 1 MatSim synthethic Objects dataset main dir')
 parser.add_argument('--MatSim_dir_vessel', default= r"sample_data/ObjectTrainData/", type=str, help='input folder 2 MatSim synthethic Vessels dataset main dir')
-parser.add_argument('--MaxPixels', default= 800*800*12, type=int, help='max Size of input matrix in pixels H*W*BatchSize')
+parser.add_argument('--MaxPixels', default= 800*800*12, type=int, help='max Size of input matrix in pixels H*W*BatchSize (reduce to solve cuda out of memory)')
+parser.add_argument('--MaxImagesInBatch', default = 15, type=int, help='max images in a a batch (reduce to solve cuda out of memory)')
 parser.add_argument('--temp', default= 0.2, type=float, help='temperature for softmax')
 parser.add_argument('--weight_decay', default= 4e-5, type=float, help='optimizer weight decay')
 parser.add_argument('--learning_rate', default= 1e-5, type=float, help='optimizer learning rate')
-parser.add_argument('--max_iteration', default= 200000, type=float, help='max training iteration')
+parser.add_argument('--max_iteration', default= 200001, type=float, help='max training iteration')
 parser.add_argument('--log_dir', default= r"logs/", type=str, help='log folder were train model will be saved')
 parser.add_argument('--resume_training_from', default= r"", type=str, help='path to model to resume training from')
-parser.add_argument('--auto_resume', default= True, type=bool, help='start training from existing last saved model')
+parser.add_argument('--auto_resume', default= True, type=bool, help='start training from existing last saved model (Defult.torch)')
 parser.add_argument('--min_img_size', default= 200, type=int, help='min image size for augmentation')
 parser.add_argument('--max_img_size', default= 1100, type=int, help='max image size for augmentation')
 device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
@@ -82,10 +83,10 @@ for itr in range(InitStep,args.max_iteration): # Main training loop
    # print(itr)
     if np.random.rand()<0.5: #load from each loader with 50% probability
         mode="objects"
-        Images, Masks, frctLst, matDirLst, sceneDirLst=SimReaderObjects.LoadRandomAugmentedBatch(MaxPixelsBatch=args.MaxPixels,minSz=args.min_img_size,MaxSz=args.max_img_size)
+        Images, Masks, frctLst, matDirLst, sceneDirLst=SimReaderObjects.LoadRandomAugmentedBatch(MaxImagesInBatch=args.MaxImagesInBatch,MaxPixelsBatch=args.MaxPixels,minSz=args.min_img_size,MaxSz=args.max_img_size)
     else:
          mode = "vessels"
-         Images, Masks, frctLst, matDirLst, sceneDirLst = SimReaderVessels.LoadRandomAugmentedBatch(MaxPixelsBatch=args.MaxPixels,minSz=args.min_img_size,MaxSz=args.max_img_size)
+         Images, Masks, frctLst, matDirLst, sceneDirLst = SimReaderVessels.LoadRandomAugmentedBatch(MaxImagesInBatch=args.MaxImagesInBatch,MaxPixelsBatch=args.MaxPixels,minSz=args.min_img_size,MaxSz=args.max_img_size)
 
 #***********************************************************************************************
     # for i in range(Images.shape[0]):
@@ -105,10 +106,7 @@ for itr in range(InitStep,args.max_iteration): # Main training loop
     with torch.cuda.amp.autocast():
         Net.zero_grad()
         desc = Net.forward(Images, Masks, TrainMode=True)
-
         Loss,tpfp = Net.SoftLossCosineSimilarity(desc,frctLst, matDirLst,temp=args.temp)
-
-        if Loss==0: continue
     #-----------------------backpropogate----------------------------------------------------------------------------------------------------------------
         scaler.scale(Loss).backward()  # Backpropogate loss caler used for mix precision
         scaler.step(optimizer)  # Apply gradient descent change to weight scaler used for mix precision
@@ -130,6 +128,7 @@ for itr in range(InitStep,args.max_iteration): # Main training loop
         print("model saved")
         np.save(args.log_dir+"/Learning_Rate.npy",args.learning_rate)
         np.save(args.log_dir+"/itr.npy",itr)
+        torch.cuda.empty_cache() # clean memory
     if itr % 50000 == 0 and itr>0: #Save model weight once every 30k steps permenant (not temp)
         print("Saving Model to file in "+args.log_dir+"/"+ str(itr) + ".torch")
         torch.save(Net.state_dict(), args.log_dir + "/" + str(itr) + ".torch")
