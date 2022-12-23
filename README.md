@@ -20,7 +20,7 @@ The net was trained with Conda 4.12.0 Torch 1.12.1+Cuda 113 on  a single RTX 309
 #### Full MatSim dataset and benchmark can be downloaded from [here](https://e1.pcloud.link/publink/show?code=kZIiSQZCYU5M4HOvnQykql9jxF4h0KiC5MX) 
 
 # Testing:
-PreTrained model can be downloaded from this [url](https://e1.pcloud.link/publink/show?code=kZGUwQZNV7k6Y8NrH5zjCQPQT0Fb0aFatjV) or [2](https://icedrive.net/s/Nv97G1gDvTvhgBzxzx6iRA3CPw6B) or [3] (https://zenodo.org/record/7390166#.Y5PrsWHMJH7)
+PreTrained model can be downloaded from this [url](https://e1.pcloud.link/publink/show?code=XZ0BGYZRFqGBQ5oHzRzt652juiFa8BrpFqy) or [2](https://icedrive.net/s/25Y9CP8w1wG51W6R7Bik1t51VANP) or [3] (https://zenodo.org/record/7390166#.Y5PrsWHMJH7)
 Sample data are supplied with the code which should allow the model to run out of the box.
 
 ## Finding the best similarity to each image in a folder: Test_Model.py
