@@ -1,7 +1,7 @@
 # Contrastive learning for one-shot materials and textures similarity recognition from images, using MatSim dataset
 This net receives the image and region of the object in the image and predicts the descriptor for the material. This can be used to identify visual similarity between materials in different images (Figure 1), or identify the same material on different objects and environments using single example (one-shot). See [One-shot recognition of any material anywhere using contrastive learning with
 physics-based rendering](https://arxiv.org/pdf/2212.00648.pdf).
-#### PreTrained model can be downloaded from these urls [1](https://e1.pcloud.link/publink/show?code=XZ0BGYZRFqGBQ5oHzRzt652juiFa8BrpFqy) or [2](https://icedrive.net/s/25Y9CP8w1wG51W6R7Bik1t51VANP), [3](https://zenodo.org/record/7390166#.Y5PrsWHMJH7)
+#### PreTrained model can be downloaded from these urls [1](https://e1.pcloud.link/publink/show?code=XZ0BGYZRFqGBQ5oHzRzt652juiFa8BrpFqy) , [2](https://icedrive.net/s/25Y9CP8w1wG51W6R7Bik1t51VANP), [3](https://zenodo.org/record/7390166#.Y5PrsWHMJH7)
 The net was trained on the [MatSim dataset](https://zenodo.org/record/7390166#.Y5PrsWHMJH7) that can be downloaded from [1](https://e1.pcloud.link/publink/show?code=kZIiSQZCYU5M4HOvnQykql9jxF4h0KiC5MX), [2](https://icedrive.net/s/A13FWzZ8V2aP9T4ufGQ1N3fBZxDF) or [3](https://zenodo.org/record/7390166#.Y5PrsWHMJH7)
  
 ![](/Figure1.jpg)
