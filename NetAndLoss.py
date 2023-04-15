@@ -45,7 +45,7 @@ class Net(nn.Module):# Net for region based segment classification
 
                 self.type(mode)
                 InpImages1 = torch.autograd.Variable(torch.from_numpy(Images1), requires_grad=False).transpose(2,3).transpose(1, 2).type(mode)
-                ROIMask1 = torch.autograd.Variable(torch.from_numpy(Mask1.astype(np.float)), requires_grad=False).unsqueeze(dim=1).type(mode)
+                ROIMask1 = torch.autograd.Variable(torch.from_numpy(Mask1.astype(np.float32)), requires_grad=False).unsqueeze(dim=1).type(mode)
                 InpImages1 = InpImages1.to(device)
                 ROIMask1 = ROIMask1.to(device)
                 self.to(device)

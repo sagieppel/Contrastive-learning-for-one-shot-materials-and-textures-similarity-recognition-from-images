@@ -58,7 +58,7 @@ class Reader:
 
 ######################################################Augmented Image add noise##################################################################################################################################
     def Augment(self,Img,Mask):
-        Img=Img.astype(np.float)
+        Img=Img.astype(np.float32)
         if np.random.rand()<0.5: # flip left right
                 Img = np.fliplr(Img)
                 Mask = np.fliplr(Mask)
@@ -121,7 +121,7 @@ class Reader:
             Img = cv2.resize(Img, dsize=(w, h), interpolation=cv2.INTER_LINEAR)
 
             Mask = cv2.resize(Mask, dsize=(w, h), interpolation=cv2.INTER_NEAREST)
-            bbox = (np.float32(bbox) * Rs.astype(np.float)).astype(np.int64)
+            bbox = (np.float32(bbox) * Rs.astype(np.float32)).astype(np.int64)
 
  # =======================Crop image to fit batch size===================================================================================
         x1 = int(np.floor(bbox[0]))  # Bounding box x position

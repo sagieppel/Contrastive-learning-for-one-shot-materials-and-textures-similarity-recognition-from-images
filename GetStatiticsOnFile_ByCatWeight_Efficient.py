@@ -120,7 +120,7 @@ def  createMatchList(descs):
        descmat=np.zeros([len(descs),descs[0]["descs"].shape[0]])
        print('turn descriptor to list')
        for i1 in range(len(descs)):
-           descmat[i1] = descs[i1]["descs"].astype(np.float64)
+           descmat[i1] = descs[i1]["descs"].astype(np.float32)
        print('get top match')
        for i1 in range(len(descs)):
            match_scores=(descmat[i1]*descmat).sum(1)
