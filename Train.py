@@ -41,9 +41,9 @@ if not os.path.exists(args.log_dir):
 InitStep=0
 if args.auto_resume:
     if os.path.exists(args.log_dir + "/Defult.torch"):
-        Trained_model_path=args.log_dir  + "/Defult.torch"
+        args.resume_training_from=args.log_dir  + "/Defult.torch"
     if os.path.exists(args.log_dir +"/Learning_Rate.npy"):
-        Learning_Rate=np.load(args.log_dir +"/Learning_Rate.npy")
+        args.learning_rate=np.load(args.log_dir +"/Learning_Rate.npy")
     if os.path.exists(args.log_dir +"/itr.npy"): InitStep=int(np.load(args.log_dir +"/itr.npy"))
 #...............Other training paramters..............................................................................
 
